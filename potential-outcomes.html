@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Potential outcomes model
+
+						Each person (numbered $i=1,2,3,\dots,N$) has two "potential" outcomes:
+						- $y^0_i$ = donation amount in the control state (no ad),
+
+						- $y^1_i$ = donation amount in the treatment state (saw ad).
+
+						You could also call them "hypothetical" outcomes: "supposed but not *necessarily* real or true".
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Potential outcomes model
+
+						Each person has an *actual* treatment state $d_i \in \\{0, 1\\}$.
+
+						- $d_i = 0 \rightarrow$ Person $i$ is in the control state.
+						- $d_i = 1 \rightarrow$ Person $i$ is in the treatment state.
+
+						Each person has an *actual* outcome:
+						$y_i =  y^1_i \cdot d_i + y^0_i \cdot (1 - d_i)$.
+
+						(Called a "switching equation.")
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Potential outcomes model
+						 The **individual treatment effect** (for person $i$) is
+
+						 $\delta_i := y^1_i - y^0_i$.
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Potential outcomes model
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:70%;">
+					<textarea data-template>
+						### Example data
+| Individual $$(i)$$ | Actually exposed to ad? $$(d_i)$$ | Actual donation amount $$(y_i)$$ | Potential donation amount:<br> No ad $$(y^0_i)$$ | Potential donation amount:<br> Exposed to ad $$(y^1_i)$$ | Individual treatment effect $$(\delta_i)$$|
+|---|---|---|---|---|---|
+| 1 | 1 (Yes) | $0  | $0  | $0    | 0|
+| 2 | 0 (No)  | $0  | $0  | $5    | 5|
+| 3 | 1 (Yes) | $10 | $10 | $10   | 0|
+| 4 | 1 (Yes) | $10 | $5  | $10   | 5|
+| 5 | 0 (No)  | $5  | $5  | $0    | -5|
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Fundamental problem of causal inference
+						We can never observe both $y^1_i$ and $y^0_i$ for any given individual (under identical conditions). We can never directly calculate the **individual treatment effect** $\delta_i := y^1_i - y^0_i$.
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						But what **can** we do?
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Nifty expressions
+
+						### The treatment groups:
+						- $\\{i: d_i = 0\\}$: People in the control group.
+						- $\\{i: d_i = 1\\}$: People in the treatment group.
+
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## More nifty expressions
+
+						### Averages:
+						- $ \tfrac{1}{N}\displaystyle\sum_i^N y_i $: Average outcome (donation amount),
+
+						- $ \tfrac{1}{N_0}\displaystyle\sum_{\\{i: d_i = 0\\}} y_i $: Average in the control group,
+						
+						- $ \tfrac{1}{N_1}\displaystyle\sum_{\\{i: d_i = 1\\}} y_i $: Average in the treatment group.
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						### Causal inference: Just taking averages.
+
+						- Simplify by assuming infinite data.
+						- "Abstract" away the complexity of samples to get a probability model.
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						### Probability model
+
+						Every $(y^0_i, y^1_i, d_i)$ is an independent realization of some random variables $(Y^0, Y^1, D)$.
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						### Averages and infinite data: Expectations.
+
+						- $ \tfrac{1}{N}\displaystyle\sum_i^N y_i \rightarrow E[Y]$,
+						
+						- $ \tfrac{1}{\sum d_i}\displaystyle\sum_{\\{i: d_i = 1\\}} y_i \rightarrow E[Y | D=1]$.
+
+						### Why? Law of large numbers.
+					</textarea>
+				</section>
+
+				<section>
+					<!-- Law of of large numbers: normal -->
+				  <img src="https://user-images.githubusercontent.com/7819919/62014049-b98c7200-b150-11e9-8e88-e798f18ab0dc.png" class="plain">
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						### Identification
+
+						- So now we can put aside samples, confidence intervals, p-values, and power.
+
+						- Supposing we have infinite data, what can we know about the probability model? What can we not know? This is called **identification**.
+
+						- The key: Do $(Y^1, Y^0)$ and $D$ have the correct relationship?
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Average treatment effect (ATE)
+
+						We want to know:
+
+						$$E\[\delta_i\] = E\[Y^1 - Y^0\].$$
+					</textarea>
+				</section>  
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Naive average treatment effect (NATE)
+
+						We **can** identify:
+
+						$$E\[Y | D = 1\] - E\[Y | D = 0\].$$
+
+						(Trivially. Why?)
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## NATE decomposition
+
+						Does the NATE get us what we want? Not necessarily.
+
+						NATE = 
+						ATE + (Selection bias) + (Differential effect bias)
+					</textarea>
+				</section>
+  
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Selection bias
+
+						$$E[Y^0 | \text{Treatment group}] - E[Y^0 | \text{Control group}].$$	
+
+					
+					</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
