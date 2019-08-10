@@ -44,17 +44,21 @@
                 </section>
 
                 <section>
+
+                </section>
+
+                <section style="font-size:85%;">
                     <a href="http://www.econtalk.org/susan-athey-on-machine-learning-big-data-and-causation/#audio-highlights">EconTalk: "Susan Athey on Machine Learning, Big Data, and Causation"</a> (read this)
                     <p>"The A/B test is probably the most impactful business process innovation that has occurred in a very long time."</p>
                     <ul>
                         <li>Large-scale incremental improvements</li>
-                        <li>Standardized, decentralized product launch decisions</li>
+                        <li>Decentralized but disciplined product launch decisions</li>
                     </ul>
                     
                 </section>                
 
                 <section>
-                  <h3>Experiments and causal inference are difficult.</h3>
+                  <h3>Experiments and causal inference are challenging.</h3>
                 </section>
 
                 <section>
@@ -104,7 +108,7 @@
                 </section>
 
                 <section>
-                  <h3>Also difficult in economics</h3>
+                  <h3>Also challenging in economics</h3>
                 </section>
 
                 <section>
@@ -128,21 +132,39 @@
                 </section>
 
                 <section>
-                    <!-- Law of of large numbers: normal -->
-                  <img src="https://user-images.githubusercontent.com/7819919/62014049-b98c7200-b150-11e9-8e88-e798f18ab0dc.png" class="plain">
-                    
+                    <div>
+                    <img src="https://user-images.githubusercontent.com/7819919/62024433-caa5a500-b189-11e9-80d2-94584fdbc9c2.png" style="height:650px;" class="plain">
+                    </div>
+                </section>
+
+                <section data-markdown style="font-size:50%;">
+                    <textarea data-template>
+                        ## Example: UNICEF search ads
+                        |Individual `$(i)$`|Actually exposed to ad? `$(d_i)$`|Actual donation amount `$(y_i)$`| Potential donation amount:<br>No ad `$(y^0_i)$`|Potential donation amount:<br> Exposed to ad `$(y^1_i)$`| Individual treatment effect `$(d_i)$`|
+                        |--|--|--|--|--|--|
+                        | 1 | 1 (Yes) | $0  | $0  | $0    | 0
+                        | 2 | 0 (No)  | $0  | $0  | $5    | 5
+                        | 3 | 1 (Yes) | $10 | $10 | $10   | 10
+                        | 4 | 1 (Yes) | $10 | $5  | $10   | 5
+                        | 5 | 0 (No)  | $5  | $5  | $0    | -5
+                  </textarea>
                 </section>
 
                 <section>
-                    <!-- Law of of large numbers: bernoulli -->
+                  <!-- Law of of large numbers: normal -->
+                  <p style="font-size:75%">Strong law of large numbers:<br />
+                  Almost all data sets look like this.</p>
+                  <img src="https://user-images.githubusercontent.com/7819919/62014049-b98c7200-b150-11e9-8e88-e798f18ab0dc.png" class="plain" style="height:500px;">
+                </section>
+
+                <section>
+                  <!-- Law of of large numbers: bernoulli -->
                   <img src="https://user-images.githubusercontent.com/7819919/62014139-03298c80-b152-11e9-9722-41dc1fcb9ec5.png" class="plain">
-                    
                 </section>
 
                 <section>
-                    <!-- Law of of large numbers: cauchy -->
+                  <!-- Law of of large numbers: cauchy -->
                   <img src="https://user-images.githubusercontent.com/7819919/62014150-4421a100-b152-11e9-9539-dbb1176c69c6.png" class="plain">
-                    
                 </section>
 
                 
@@ -151,6 +173,8 @@
         </div>
 
         <script src="js/reveal.js"></script>
+        <script src="plugin/markdown/marked.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
 
         <script>
             // More info about config & dependencies:
@@ -161,7 +185,8 @@
                     { src: 'plugin/markdown/marked.js' },
                     { src: 'plugin/markdown/markdown.js' },
                     { src: 'plugin/notes/notes.js', async: true },
-                    { src: 'plugin/highlight/highlight.js', async: true }
+                    { src: 'plugin/highlight/highlight.js', async: true },
+                    { src: 'plugin/math/math.js', async: true }
                 ]
             });
         </script>
