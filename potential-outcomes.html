@@ -210,8 +210,69 @@
 						## Selection bias
 
 						$$E[Y^0 | \text{Treatment group}] - E[Y^0 | \text{Control group}].$$	
+					</textarea>
+				</section>
 
-					
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Independence assumption
+
+						The *potential* outcomes should be independent of treatment group:
+
+						$$(Y^1, Y^0) \perp D.$$
+						
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Independence assumption
+
+						$$(Y^1, Y^0) \perp D \Rightarrow E[Y^0 | D] = E[Y^0] $$
+						$$(Y^1, Y^0) \perp D \Rightarrow E[Y^1 | D] = E[Y^1] $$
+
+						$$\Rightarrow E[Y^1 | D] - E[Y^0 | D] = E[Y^1] - E[Y^0]$$
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Differential effect bias
+
+						Those who were actually treated respond differently to the treatment than would have those were not actually treated:
+						$$E[\Delta | D=1] \not= E[\Delta| D=0].$$
+
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Differential effect bias
+
+						The bias is:
+						$$P(D=1) \cdot (E[\Delta | D=1] - E[\Delta| D=0]).$$
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Differential effect bias
+
+						The bias is:
+						$$P(D=1) \cdot (E[\Delta | D=1] - E[\Delta| D=0]).$$
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional independence assumption
+
+						Suppose $X$ is some characteristics of each individual.
+
+						The potential outcomes should be independent of treatment group, _conditional on the covariates_:
+
+						$$(Y^1, Y^0) \perp D ~| ~X.$$
 					</textarea>
 				</section>
 
