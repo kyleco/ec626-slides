@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Random sampling
+
+						- Real experiment: Have data, not the random variables $Y^1, Y^0, D, \text{ and } X$.
+						
+						- Each observation ("data point") $(y_i, d_i, x_i)$: An independent random draw from an *unknown* distribution.
+
+						- The set of observations is called a "sample".
+					</textarea>
+				</section>
+		
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Random sampling
+
+						How to simulate *a* random sample
+
+						Lowercase means we view these as fixed realizations:
+
+						- Data: $x_1, x_2, \ldots, x_{100} \text{ realizations of Normal}(1.5, 1)$
+						- Sample mean: $\bar{x} = \tfrac{1}{100}\sum_{i=1}^{100} x_i$
+
+						```
+						N = 100  # Sample size
+
+						# Draw one sample of size 100 
+						# from a Normal(mean=1.5, std=1) distribution.
+						# This is sampling *with* replacement!
+						X = numpy.random.normal(loc=1.5, scale=1, size=N)
+
+						# The mean and SD of this sample do not
+						# exactly match the population distribution.
+						print(X.mean(), X.std()) 
+						1.5187 0.9362
+
+						```
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Random sampling
+
+						How to simulate "repeated sampling"
+
+						Uppercase means we view these as random variables.
+
+						- Data: $X_1, X_2, \ldots, X_{100} \sim \text{Normal}(1.5, 1)$
+						- Sample mean: $\bar{X} = \tfrac{1}{100}\sum_{i=1}^{100} X_i$
+
+						```
+						N = 300  # Sample size
+						B = 10000  # Number of samples
+
+						# X is a 300 by 10000 matrix:
+						# 10000 samples each with 300 observations
+						X = numpy.random.normal(loc=1.5, scale=1, size=(N, B))
+
+						# Calculate the mean of each sample
+						# This is a Series of 10000 means.
+						Xbar = X.mean(axis=0)
+
+						```
+					</textarea>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
