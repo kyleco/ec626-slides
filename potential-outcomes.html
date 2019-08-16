@@ -231,7 +231,7 @@
 						$$(Y^1, Y^0) \perp D \Rightarrow E[Y^0 | D] = E[Y^0] $$
 						$$(Y^1, Y^0) \perp D \Rightarrow E[Y^1 | D] = E[Y^1] $$
 
-						$$\Rightarrow E[Y^1 | D] - E[Y^0 | D] = E[Y^1] - E[Y^0]$$
+						$$\Rightarrow E[Y^1 | D=1] - E[Y^0 | D=0] = E[Y^1] - E[Y^0]$$
 					</textarea>
 				</section>
 
@@ -273,6 +273,47 @@
 						The potential outcomes should be independent of treatment group, _conditional on the covariates_:
 
 						$$(Y^1, Y^0) \perp D ~| ~X.$$
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## SUTVA
+
+						Stable unit-treatment-value assumption
+
+						- Only one "version" of treatment
+						- Units do not interact
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## SUTVA: Only one "version" of each treatment
+
+						- Doctors Without Borders: Only one version of the ad. *But* if multiple then we define multiple treatments and need to track them.
+
+						- Hormone treatment: Only one version of the drug.
+
+						- If multiple versions then effect is unidentified because it depends on the mixture of versions.
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## SUTVA: Units do not interact
+
+						- DWB: Tell others about donation?
+
+						- Education research: Classroom interactions.
+
+						- Website: Treatment speeds/slows site overall.
+
+						- Implications for Facebook, Twitter, Insta?
+
+						- $Y_i = Y_i^1 D_i + Y_i^0 (1-D_i)$ 
 					</textarea>
 				</section>
 
