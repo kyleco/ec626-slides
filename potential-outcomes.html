@@ -55,6 +55,22 @@
 					</textarea>
 				</section>
 
+				<section data-markdown style="font-size:80%;">
+					<textarea data-template>
+						## Generalization: Many-valued treatments
+
+						Examples:
+						- Dosage of a drug in milligrams
+						- Dollars of ad spend in a market
+						- Several versions of a webpage
+
+						Model:
+						- $j=1,...,J$ different treatment states.
+						- $d_{j,i} = 1 \leftrightarrow$ Person $i$ has treatment state $j$.
+						- $Y = \sum_j D_{j,i} Y_{j,i}$
+					</textarea>
+				</section>
+
 				<section data-markdown style="font-size:90%;">
 					<textarea data-template>
 						## Potential outcomes model
@@ -177,7 +193,7 @@
 
 						We want to know:
 
-						$$E\[\delta_i\] = E\[Y^1 - Y^0\].$$
+						$$E\[\Delta_i\] = E\[Y^1 - Y^0\].$$
 					</textarea>
 				</section>  
 

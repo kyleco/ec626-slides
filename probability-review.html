@@ -25,6 +25,21 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Random variables
+
+						- Variable: A thing that can take various values.
+						- Random: It follows a probability distribution.
+						- We use it as a model of data.
+						- Examples:
+							- Coin flips
+							- Whether someone donates $10 (compare to coin flip)
+							- Spinning Wheel of Fortune (many values)
+							- Amount of money donated (many values)
+					</textarea>
+				</section>
 				
 				<section data-markdown style="font-size:90%;">
 					<textarea data-template>
@@ -45,11 +60,83 @@
 
 				<section data-markdown style="font-size:90%;">
 					<textarea data-template>
+						## Random variables
+
+						- Events:
+							- $\\{X = 0\\}$
+							- $\\{X >= 2\\}$ 
+						- Probability of an event: $P(X=0)=0.5$
+						- We can use lowercase to denote specific values:
+							- Example: Defining a function $f(x) = P(X=x)$. 
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Random variables
+
+						- $\\{X_1, X_2, \ldots, X_3\\}$: Data points considered as random variables, i.e., before they are collected.
+						- $\\{x_1, x_2, \ldots, x_3\\}$: Data points considered as a fixed set of realized numbers, i.e., after we have the data.
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Probability mass functions
+
+						- $$
+						- $\\{x_1, x_2, \ldots, x_3\\}$: Data points considered as a fixed set of realized numbers, i.e., after we have the data.
+					</textarea>
+				</section>
+
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
 						## Expectation
 
 						- Expectation means average
 						- $X \sim \text{Normal}(\mu, \sigma^2) \Rightarrow E[X]=\mu$
 						- $Z \sim \text{Exponential}(\lambda)\Rightarrow E[Z]=\tfrac{1}{\lambda}$ 
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional expectation
+
+						- $E[X|Z=z]$: Expectation of $X$ when $Z$ is at the particular value $z$.
+						
+						- Sample analog: Average of $X$ looking only at the subset of data where $Z=z$.
+
+						
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional expectation
+
+						Mean independence:
+
+						The expectation of $X$ is independent of $Z$.
+
+						$E[X|Z] = E[X]$
+						
+					</textarea>
+				</section>
+
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Independent distributions
+
+						- $X$ and $Z$ are independent if they have no relationship. Knowing the value of one tells you nothing about the other.
+
+						- $F_{X,Z}(x,z) = F_X(x)F_Z(z)$
+						
 					</textarea>
 				</section>
 
@@ -63,6 +150,16 @@
 					</textarea>
 				</section>
 		
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Expectation
+
+						Conditional expectations are linear too:
+						$$E[X + Y|Z] = E[X|Z] + E[Y|Z].$$
+					</textarea>
+				</section>
+
 			</div>
 		</div>
 
