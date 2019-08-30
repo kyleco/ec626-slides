@@ -284,11 +284,67 @@
 					<textarea data-template>
 						## Conditional independence assumption
 
+						The independence assumption is often not true. But there is an alternative assumption that is also sufficient to identify the ATE.
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional independence assumption
+
 						Suppose $X$ is some characteristics of each individual.
 
 						The potential outcomes should be independent of treatment group, _conditional on the covariates_:
 
 						$$(Y^1, Y^0) \perp D ~| ~X.$$
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional independence assumption
+
+						Simple case: $X$ is a category. E.g., hospitals in a study.
+
+						Then CIA just means that the independence assumption holds *within each hospital*.
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:90%;">
+					<textarea data-template>
+						## Conditional independence assumption
+
+						Why might this happen? Limited resources.
+
+						Hospital A: Large supply of drug. 50%/50% split. N = 1000.
+
+						Hospital B: Limited doses of experimental drug. 10% get it. N=200.
+
+						Treatment group = 520 (96% hospital A).
+						Control group = 680 (74% hospital A).
+
+						Are these groups comparable?
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:60%;">
+					<textarea data-template>
+						## Conditional independence assumption
+
+						$$(Y^1, Y^0) \perp D ~| ~X \Rightarrow$$
+						
+						$$\underbrace{E[Y^1|X,\text{Treatment}] - E[Y^0|X,\text{Control}]}_\text{NATE(X)} = \underbrace{E[Y^1 - Y^0|X]}_\text{ATE(X)} $$
+					</textarea>
+				</section>
+
+				<section data-markdown style="font-size:60%;">
+					<textarea data-template>
+						## Conditional independence assumption
+						But we can get the full ATE by a weighted sum:
+
+						$$ATE = E[ATE(X)] = \sum_x ATE(x) \cdot P(X=x)$$
+						
+						In practice this means the estimation is more complicated. Pay attention for the homework!
 					</textarea>
 				</section>
 
